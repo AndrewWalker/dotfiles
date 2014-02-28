@@ -1,0 +1,19 @@
+[user]
+    name = Andrew Walker
+    email = walker.ab@gmail.com
+
+[color]
+    ui = true
+
+[alias]
+    co = commit
+    st = status
+    # as per Git Immersion
+    # http://gitimmersion.com/lab_11.html#main_content
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+[core]
+    excludesfile = ~/.gitignore
+
+[push]
+	default = matching

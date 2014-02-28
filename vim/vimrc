@@ -1,0 +1,57 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'wombat256.vim'
+Bundle 'godlygeek/tabular'
+
+syntax on
+let mapleader=","   " the leader command should be a comma rather than a slash
+set tabstop=4       " tabstop every 4 'spaces'
+set shiftwidth=4    " shiftwidth the same as a single tabstop
+set softtabstop=4
+set expandtab       " tab to spaces
+set visualbell      " prevent beeps
+set laststatus=2    " always show modeline
+set textwidth=0
+set linebreak       " linebreak at words
+set nowrap          " default is not to wrap
+
+" simplified split navigation
+" <C-w> v - vertical split
+" <C-w> s - horizontal split
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" reformat paragraph
+map <leader>p gwap
+
+" reload configuration
+map <leader>v :source $MYVIMRC<CR>
+
+" reduce noise browsing for files
+set wildignore=*.pyc,*.o,*.so,*.os
+
+" colorscheme
+try
+    set t_Co=256
+    colorscheme wombat256mod
+catch
+endtry
+
+" spelling
+set spelllang=en_au
+set spellfile=$HOME/.vimspell.add
+syntax spell toplevel
+
+" nerdtree
+autocmd VimEnter * if exists(":NERDTree") | exe "nnoremap <leader>n :NERDTreeToggle\<CR>" | endif
+
+filetype plugin indent on

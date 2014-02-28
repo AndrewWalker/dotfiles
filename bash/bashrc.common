@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Configure path
+export PATH=$PATH:/usr/local/bin:~/.local/bin
+
+# Force tmux to use 256 colors
+alias tmux="tmux -2"
+
+# Make command line launched virtualbox quiet
+alias VirtualBox="VirtualBox >/dev/null 2>&1"
+
+# setup pip to use a local file cache
+export PIP_DOWNLOAD_CACHE=~/.pip_download_cache
+mkdir -p $PIP_DOWNLOAD_CACHE
+
+which pip > /dev/null
+if [[ "$?" != "0" ]]; then
+    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    python get-pip.py --user
+fi
+
+# if you can't find virtualenv, go get it
+which virtualenvwrapper.sh > /dev/null
+if [[ "$?" != "0" ]]; then
+    pip install virtualenvwrapper --user 
+fi
+source virtualenvwrapper.sh
+
+# Presentation specific settings
+#export PYTHONDONTWRITEBYTECODE=1
+#export PYTHONSTARTUP=$HOME/.pythonstartup
+#export PS1="> "

@@ -1,0 +1,11 @@
+*.swp
+*.pyc
+*.os
+*.o
+*.so
+*.bbl
+*.blg
+*.aux
+*.toc
+.netrwhist
+.sconsign.dblite
