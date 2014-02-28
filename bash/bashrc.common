@@ -13,18 +13,11 @@ alias VirtualBox="VirtualBox >/dev/null 2>&1"
 export PIP_DOWNLOAD_CACHE=~/.pip_download_cache
 mkdir -p $PIP_DOWNLOAD_CACHE
 
-which pip > /dev/null
-if [[ "$?" != "0" ]]; then
-    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    python get-pip.py --user
-fi
-
 # if you can't find virtualenv, go get it
 which virtualenvwrapper.sh > /dev/null
-if [[ "$?" != "0" ]]; then
-    pip install virtualenvwrapper --user 
+if [[ "$?" == "0" ]]; then
+    source virtualenvwrapper.sh
 fi
-source virtualenvwrapper.sh
 
 # Presentation specific settings
 #export PYTHONDONTWRITEBYTECODE=1

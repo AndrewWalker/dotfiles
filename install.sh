@@ -28,3 +28,16 @@ then
 else
     echo "source ~/.bashrc.common" >> ~/.bashrc
 fi
+
+which pip > /dev/null
+if [[ "$?" != "0" ]]; then
+    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    python get-pip.py --user
+fi
+
+# if you can't find virtualenv, go get it
+which virtualenvwrapper.sh > /dev/null
+if [[ "$?" != "0" ]]; then
+    pip install virtualenvwrapper --user 
+fi
+
