@@ -9,10 +9,6 @@ alias tmux="tmux -2"
 # Make command line launched virtualbox quiet
 alias VirtualBox="VirtualBox >/dev/null 2>&1"
 
-# setup pip to use a local file cache
-export PIP_DOWNLOAD_CACHE=~/.pip_download_cache
-mkdir -p $PIP_DOWNLOAD_CACHE
-
 # if you can't find virtualenv, go get it
 which virtualenvwrapper.sh > /dev/null
 if [[ "$?" == "0" ]]; then
