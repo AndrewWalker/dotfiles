@@ -65,4 +65,15 @@ syntax spell toplevel
 " nerdtree
 autocmd VimEnter * if exists(":NERDTree") | exe "nnoremap <leader>n :NERDTreeToggle\<CR>" | endif
 
+" Filetype remappings
+autocmd BufRead,BufNewFile,BufFilePost *.md set filetype=markdown
+autocmd BufRead,BufNewFile,BufFilePost */SConscript set filetype=python
+autocmd BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
+
+" For editing prosed documents, enable spelling
+autocmd FileType tex,rst,md setlocal spell
+
+" For makefiles, we want to use tabs, not spaces
+autocmd FileType make set noexpandtab
+
 filetype plugin indent on
