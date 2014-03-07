@@ -3,14 +3,11 @@
 # base-path to the location that this script is being run from
 BASEPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# if vundle is not installed
-if [ ! -d ~/.vim/bundle/vundle ]; then
-    # install vundle
-    install -d ~/.vim/bundle
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-    # do an initial provisioning of vim
-    bash -ic 'vim +BundleInstall +qall'
+# if neobundle is not installed
+if [ ! -d ~/.vim/bundle/neobundle.vim ]; then
+    # install neobundle
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
 
 # link the appropriate files into place

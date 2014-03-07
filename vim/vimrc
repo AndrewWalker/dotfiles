@@ -1,24 +1,22 @@
-set nocompatible
-filetype off
+if has('vim_starting')
+    set nocompatible
+    filetype off
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+endif 
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+call neobundle#rc(expand('~/.vim/bundle'))
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'wombat256.vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Shougo/unite.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Airline modifications
-set ttimeoutlen=50
-let g:airline_detect_whitespace=0
-let g:airline_theme='badwolf'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'wombat256.vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/unite.vim'
+
 
 syntax on
 let mapleader=","   " the leader command should be a comma rather than a slash
@@ -31,6 +29,11 @@ set laststatus=2    " always show modeline
 set textwidth=0
 set linebreak       " linebreak at words
 set nowrap          " default is not to wrap
+
+" Airline modifications
+set ttimeoutlen=50
+let g:airline_detect_whitespace=0
+let g:airline_theme='badwolf'
 
 " simplified split navigation
 " <C-w> v - vertical split
@@ -70,10 +73,12 @@ autocmd BufRead,BufNewFile,BufFilePost *.md set filetype=markdown
 autocmd BufRead,BufNewFile,BufFilePost */SConscript set filetype=python
 autocmd BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
 
-" For editing prosed documents, enable spelling
+" For editing prose documents, enable spelling
 autocmd FileType tex,rst,md setlocal spell
 
 " For makefiles, we want to use tabs, not spaces
 autocmd FileType make set noexpandtab
 
 filetype plugin indent on
+
+NeoBundleCheck
