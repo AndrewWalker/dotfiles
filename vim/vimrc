@@ -14,7 +14,8 @@ NeoBundle 'wombat256.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimshell.vim', {'build': {'unix': 'make'}}
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/unite.vim'
 
 
@@ -52,6 +53,9 @@ map <leader>V :source $MYVIMRC<CR>
 
 " reduce noise browsing for files
 set wildignore=*.pyc,*.o,*.so,*.os
+
+" Unite keybindings
+nnoremap <C-p> :Unite file_rec/async<cr>
 
 " colorscheme
 try
