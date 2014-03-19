@@ -86,6 +86,10 @@ autocmd FileType tex,rst,md setlocal spell
 " For makefiles, we want to use tabs, not spaces
 autocmd FileType make set noexpandtab
 
+" In Python files <leader>r runs
+autocmd FileType python nmap <buffer> <leader>r :wall<CR>:!python -u %<CR>
+
+
 filetype plugin indent on
 
 NeoBundleCheck
