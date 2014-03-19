@@ -17,7 +17,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/unite.vim'
-
+NeoBundle 'majutsushi/tagbar'
 
 syntax on
 let mapleader=","   " the leader command should be a comma rather than a slash
@@ -46,6 +46,9 @@ map <C-l> <C-w>l
 
 " reformat paragraph
 map <leader>p gwap
+
+" reformat paragraph
+map <leader>t :TagbarToggle<CR>
 
 " reload configuration
 map <leader>v :sp $MYVIMRC<CR>
