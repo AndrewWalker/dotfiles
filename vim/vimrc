@@ -52,7 +52,7 @@ map <leader>t :TagbarToggle<CR>
 
 " reload configuration
 map <leader>v :sp $MYVIMRC<CR>
-map <leader>V :source $MYVIMRC<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
 
 " reduce noise browsing for files
 set wildignore=*.pyc,*.o,*.so,*.os
