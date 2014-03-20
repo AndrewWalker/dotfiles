@@ -1,5 +1,22 @@
 #!/bin/bash
 
+# we need to temporarily add this so that if this is happening for the
+# very first time we can find pip and virtualenv even without a bashrc
+# file
+PATH=$PATH:~/.local/bin
+
+which pip > /dev/null
+if [[ "$?" != "0" ]]; then
+    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    python get-pip.py --user
+fi
+
+# if you can't find virtualenv, go get it
+which virtualenvwrapper.sh > /dev/null
+if [[ "$?" != "0" ]]; then
+    pip install virtualenvwrapper --user 
+fi
+
 # base-path to the location that this script is being run from
 BASEPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -26,15 +43,4 @@ else
     echo "source ~/.bashrc.common" >> ~/.bashrc
 fi
 
-which pip > /dev/null
-if [[ "$?" != "0" ]]; then
-    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    python get-pip.py --user
-fi
-
-# if you can't find virtualenv, go get it
-which virtualenvwrapper.sh > /dev/null
-if [[ "$?" != "0" ]]; then
-    pip install virtualenvwrapper --user 
-fi
 
