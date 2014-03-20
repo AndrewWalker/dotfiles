@@ -14,6 +14,7 @@ NeoBundle 'wombat256.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/vimshell.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/unite.vim'
