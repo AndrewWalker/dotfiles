@@ -12,7 +12,7 @@ Basic Commands
 =================  ===========
 Command            Description
 =================  ===========
-C-a %              verticle split pane
+C-a %              vertical split pane
 C-a "              horizontal split of pane
 C-a !              new window from pane
 C-a z              zoom current window to max (temporarily)
