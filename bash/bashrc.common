@@ -12,9 +12,7 @@ alias VirtualBox="VirtualBox >/dev/null 2>&1"
 # if you can't find virtualenv, go get it
 which virtualenvwrapper.sh > /dev/null
 if [[ "$?" == "0" ]]; then
-    if [[ "$WORKON_HOME" == "" ]]; then
-        source virtualenvwrapper.sh
-    fi
+    source virtualenvwrapper.sh
 fi
 
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
