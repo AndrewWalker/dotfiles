@@ -84,6 +84,10 @@ autocmd BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
 " For editing prose documents, enable spelling
 autocmd FileType tex,rst,md setlocal spell
 
+autocmd FileType tex setlocal wrap
+autocmd FileType tex nnoremap <buffer> <silent> k gk
+autocmd FileType tex nnoremap <buffer> <silent> j gj
+
 " For makefiles, we want to use tabs, not spaces
 autocmd FileType make set noexpandtab
 
