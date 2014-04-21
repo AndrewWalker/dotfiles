@@ -1,21 +1,22 @@
 #!/bin/bash
 
+function installpip {
+    which pip > /dev/null
+    if [[ "$?" != "0" ]]; then
+        wget -c https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+        python get-pip.py --user
+    fi
+}
+
 # we need to temporarily add this so that if this is happening for the
 # very first time we can find pip and virtualenv even without a bashrc
 # file
 PATH=$PATH:~/.local/bin
 
-which pip > /dev/null
-if [[ "$?" != "0" ]]; then
-    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    python get-pip.py --user
-fi
+rm -f ~/.pip/pip.conf
 
-# if you can't find virtualenv, go get it
-which virtualenvwrapper.sh > /dev/null
-if [[ "$?" != "0" ]]; then
-    pip install virtualenvwrapper --user 
-fi
+installpip
+pip install --upgrade pip wheel virtualenvwrapper --user
 
 # base-path to the location that this script is being run from
 BASEPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -35,6 +36,9 @@ ln -s -f $BASEPATH/vim/vimrc ~/.vimrc
 ln -s -f $BASEPATH/bash/bashrc.common ~/.bashrc.common
 mkdir -p ~/.pip/
 ln -s -f $BASEPATH/pip/pip.conf ~/.pip/pip.conf
+
+pip -v wheel -r python/requirements.txt
+
 
 if grep -Fxq "source ~/.bashrc.common" ~/.bashrc 
 then    

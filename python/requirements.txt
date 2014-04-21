@@ -1,0 +1,11 @@
+numpy
+scipy
+sympy
+cython
+openpyxl
+sqlalchemy
+pandas
+ipython[all]>=2
+fabtools
+nose
+numexpr
