@@ -8,6 +8,12 @@ function installpip {
     fi
 }
 
+sudo apt-get install \
+    python-dev \
+    wget \
+    libpng12-dev \
+    libfreetype6-dev
+
 # we need to temporarily add this so that if this is happening for the
 # very first time we can find pip and virtualenv even without a bashrc
 # file
@@ -37,7 +43,8 @@ ln -s -f $BASEPATH/bash/bashrc.common ~/.bashrc.common
 mkdir -p ~/.pip/
 ln -s -f $BASEPATH/pip/pip.conf ~/.pip/pip.conf
 
-pip -v wheel -r python/requirements.txt
+pip wheel -r python/requirements.txt
+pip install -r python/requirements.txt --user
 
 
 if grep -Fxq "source ~/.bashrc.common" ~/.bashrc 
