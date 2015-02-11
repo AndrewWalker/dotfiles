@@ -1,8 +1,17 @@
 #!/bin/bash
 
+set -eu
+
 # Update the prompt
 export TERM="xterm-color"
-export PS1="\u@\h:\w$ "
+#export PS1="\u@\h:\w$ "
+
+function prompt {
+    local BLUE="\[\033[1;34m\]"
+    local GREEN="\[\033[1;32m\]"
+    local NO_COLOR="\[\033[0m\]"
+    PS1="$GREEN\u@\h$NO_COLOR:$BLUE\w$NO_COLOR$ "
+}
 
 export CLICOLOR=1
 alias ls='ls -GFh'
@@ -11,3 +20,4 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
     ssh-add
 fi
+prompt
