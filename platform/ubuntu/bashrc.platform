@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Configure path
+export PATH=$PATH:/usr/local/bin:~/.local/bin
+
+# Force tmux to use 256 colors
+alias tmux="tmux -2"
+
+# Make command line launched virtualbox quiet
+alias VirtualBox="VirtualBox >/dev/null 2>&1"
+
+# if you can't find virtualenv, go get it
+which virtualenvwrapper.sh > /dev/null
+if [[ "$?" == "0" ]]; then
+    source virtualenvwrapper.sh
+fi
+
+# Pip
+export PIP_USE_WHEEL=true
+export PIP_WHEEL_DIR=$HOME/.wheelhouse
+export PIP_FIND_LINKS="$PIP_WHEEL_DIR"
+
+# Presentation specific settings
+#export PYTHONSTARTUP=$HOME/.pythonstartup
+#export PS1="> "

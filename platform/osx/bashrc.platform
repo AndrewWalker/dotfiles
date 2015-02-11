@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Update the prompt
+export TERM="xterm-color"
+export PS1="\u@\h:\w$ "
+
+export CLICOLOR=1
+alias ls='ls -GFh'
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+    ssh-add
+fi
