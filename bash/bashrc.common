@@ -30,6 +30,11 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # Prevents .pyc files from being written
 export PYTHONDONTWRITEBYTECODE=1
 
+# Pip
+export PIP_USE_WHEEL=true
+export PIP_WHEEL_DIR=$HOME/.wheelhouse
+export PIP_FIND_LINKS="$PIP_WHEEL_DIR"
+
 # Presentation specific settings
 #export PYTHONSTARTUP=$HOME/.pythonstartup
 #export PS1="> "
