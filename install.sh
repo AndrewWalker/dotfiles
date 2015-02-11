@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ue
+
 # Given that my primary editor is vim, and some things are hard to do 
 # without an (minimally functional) editor, install the plugins required
 function install_neobundle {
