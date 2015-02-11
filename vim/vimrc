@@ -4,7 +4,7 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif 
 
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -19,6 +19,8 @@ NeoBundle 'Shougo/vimshell.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'majutsushi/tagbar'
+
+call neobundle#end()
 
 syntax on
 let mapleader=","   " the leader command should be a comma rather than a slash
