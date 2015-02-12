@@ -1,6 +1,5 @@
 " :PlugInstall to add plugins
 call plug#begin('~/.vim/plugged')
-
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'wombat256.vim'
@@ -9,7 +8,6 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
-
 call plug#end()
 
 syntax on
