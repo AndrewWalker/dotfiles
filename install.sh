@@ -2,15 +2,11 @@
 
 set -ue
 
-# Given that my primary editor is vim, and some things are hard to do 
-# without an (minimally functional) editor, install the plugins required
-function install_neobundle {
-    # if neobundle is not installed
-    if [ ! -d ~/.vim/bundle/neobundle.vim ]; then
-        # install neobundle
-        mkdir -p ~/.vim/bundle
-        git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-    fi
+function deploy 
+{
+    SRC=$1
+    DST=$2
+    ln -s -f $SRC $DST
 }
 
 case $OSTYPE in
@@ -28,13 +24,14 @@ esac
 BASEPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # link the appropriate files into place
-install_neobundle
-ln -s -f $BASEPATH/tmux/tmux.conf ~/.tmux.conf
-ln -s -f $BASEPATH/git/gitconfig ~/.gitconfig
-ln -s -f $BASEPATH/git/gitignore ~/.gitignore
-ln -s -f $BASEPATH/vim/vimrc ~/.vimrc
-ln -s -f $BASEPATH/bash/bashrc.common ~/.bashrc.common
-ln -s -f $BASEPATH/platform/$TARGET/bashrc.platform ~/.bashrc.platform
+deploy $BASEPATH/tmux/tmux.conf ~/.tmux.conf
+deploy $BASEPATH/git/gitconfig ~/.gitconfig
+deploy $BASEPATH/git/gitignore ~/.gitignore
+deploy $BASEPATH/bash/bashrc.common ~/.bashrc.common
+deploy $BASEPATH/platform/$TARGET/bashrc.platform ~/.bashrc.platform
+deploy $BASEPATH/vim/vimrc ~/.vimrc
+deploy $BASEPATH/vim/vimspell.add ~/.vimspell.add
+deploy $BASEPATH/vim/vim ~/.vim
 
 source platform/$TARGET/install.sh
 

@@ -1,29 +1,21 @@
-if has('vim_starting')
-    set nocompatible
-    filetype off
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-endif 
+" :PlugInstall to add plugins
+call plug#begin('~/.vim/plugged')
 
-call neobundle#begin(expand('~/.vim/bundle'))
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'wombat256.vim'
+Plug 'godlygeek/tabular'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'wombat256.vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Shougo/vimshell.vim', {'build': {'unix': 'make'}}
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'majutsushi/tagbar'
-
-call neobundle#end()
+call plug#end()
 
 syntax on
+
 let mapleader=","   " the leader command should be a comma rather than a slash
+set nocompatible
 set tabstop=4       " tabstop every 4 'spaces'
 set shiftwidth=4    " shiftwidth the same as a single tabstop
 set softtabstop=4
@@ -33,70 +25,35 @@ set laststatus=2    " always show modeline
 set textwidth=0
 set linebreak       " linebreak at words
 set nowrap          " default is not to wrap
+set wildignore=*.pyc,*.o,*.so,*.os " reduce noise browsing for files
+set spelllang=en_au
+set spellfile=$HOME/.vimspell.add
+set t_Co=256
+syntax spell toplevel
+
+try
+    colorscheme wombat256mod
+catch
+endtry
+
+" Split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" reload configuration
+map <leader>v :sp $MYVIMRC<CR>
+
+" Filetype remappings
+" These could be in ftdetect, but ok here for now
+au BufRead,BufNewFile,BufFilePost *.md set filetype=markdown
+au BufRead,BufNewFile,BufFilePost */SConscript set filetype=python
+au BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
 
 " Airline modifications
 set ttimeoutlen=50
 let g:airline_detect_whitespace=0
 let g:airline_theme='badwolf'
 
-" simplified split navigation
-" <C-w> v - vertical split
-" <C-w> s - horizontal split
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 
-" reformat paragraph
-map <leader>p gwap
-
-" reformat paragraph
-map <leader>t :TagbarToggle<CR>
-
-" reload configuration
-map <leader>v :sp $MYVIMRC<CR>
-autocmd bufwritepost .vimrc source $MYVIMRC
-
-" reduce noise browsing for files
-set wildignore=*.pyc,*.o,*.so,*.os
-
-" Unite keybindings
-nnoremap <C-p> :Unite file_rec/async<cr>
-
-" colorscheme
-try
-    set t_Co=256
-    colorscheme wombat256mod
-catch
-endtry
-
-" spelling
-set spelllang=en_au
-set spellfile=$HOME/.vimspell.add
-syntax spell toplevel
-
-" nerdtree
-autocmd VimEnter * if exists(":NERDTree") | exe "nnoremap <leader>n :NERDTreeToggle\<CR>" | endif
-
-" Filetype remappings
-autocmd BufRead,BufNewFile,BufFilePost *.md set filetype=markdown
-autocmd BufRead,BufNewFile,BufFilePost */SConscript set filetype=python
-autocmd BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
-
-" For editing prose documents, enable spelling
-autocmd FileType tex,rst,md setlocal spell
-
-autocmd FileType tex setlocal wrap
-autocmd FileType tex nnoremap <buffer> <silent> k gk
-autocmd FileType tex nnoremap <buffer> <silent> j gj
-
-" For makefiles, we want to use tabs, not spaces
-autocmd FileType make set noexpandtab
-
-" In Python files <leader>r runs
-autocmd FileType python nmap <buffer> <leader>r :wall<CR>:!python -u %<CR>
-
-
-filetype plugin indent on
-
-NeoBundleCheck
