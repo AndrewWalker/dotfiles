@@ -51,7 +51,7 @@ au BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
 
 " Airline modifications
 set ttimeoutlen=50
-let g:airline_detect_whitespace=0
+"let g:airline_detect_whitespace=0
 let g:airline_theme='badwolf'
 
 
