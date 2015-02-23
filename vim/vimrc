@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 Plug 'wombat256.vim'
 Plug 'godlygeek/tabular'
 Plug 'bling/vim-airline'
@@ -53,5 +54,8 @@ au BufRead,BufNewFile,BufFilePost */SConstruct set filetype=python
 set ttimeoutlen=50
 "let g:airline_detect_whitespace=0
 let g:airline_theme='badwolf'
+let g:airline#extensions#syntastic#enabled = 1
 
+map <silent> <Leader>e :Errors<CR>
+map <Leader>s :SyntasticToggleMode<CR>
 
