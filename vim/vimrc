@@ -1,11 +1,12 @@
 " :PlugInstall to add plugins
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'wombat256.vim'
-Plug 'godlygeek/tabular'
-Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdcommenter'     " Comments
+Plug 'scrooloose/nerdtree'          " File browser
+Plug 'scrooloose/syntastic'         " Linter / style checker
+Plug 'wombat256.vim'                " Color scheme
+Plug 'godlygeek/tabular'            " Anything to table-like structure
+Plug 'bling/vim-airline'            " Make the ruler into something more
+Plug 'majutsushi/tagbar'            " ctags integration
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
@@ -55,7 +56,11 @@ set ttimeoutlen=50
 "let g:airline_detect_whitespace=0
 let g:airline_theme='badwolf'
 let g:airline#extensions#syntastic#enabled = 1
+"let g:airline_powerline_fonts = 1
 
 map <silent> <Leader>e :Errors<CR>
 map <Leader>s :SyntasticToggleMode<CR>
 
+let g:tagbar_ctags_bin = '~/homebrew/bin/ctags'
+
+map <Leader>t :TagbarToggle<CR>
