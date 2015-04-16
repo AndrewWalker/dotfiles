@@ -10,3 +10,4 @@
 .netrwhist
 .sconsign.dblite
 .vagrant
+.DS_Store
