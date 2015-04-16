@@ -31,6 +31,7 @@ deploy $BASEPATH/bash/bashrc.common ~/.bashrc.common
 deploy $BASEPATH/platform/$TARGET/bashrc.platform ~/.bashrc.platform
 deploy $BASEPATH/vim/vimrc ~/.vimrc
 deploy $BASEPATH/vim/vimspell.add ~/.vimspell.add
+deploy $BASEPATH/haskell/ghci.conf ~/.ghci.conf
 rm -rf ~/.vim
 deploy $BASEPATH/vim/vim ~/.vim
 
