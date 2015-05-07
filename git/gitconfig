@@ -6,6 +6,7 @@
     ui = true
 
 [alias]
+    rb = remote show origin
     co = commit
     st = status
     # as per Git Immersion
@@ -18,4 +19,4 @@
     editor=vim
 
 [push]
-    default = matching
+    default = current
