@@ -6,5 +6,5 @@ function color_prompt {
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH=$PATH:/Applications/MATLAB_R2015a.app/bin/
+export PATH=$PATH:/Applications/MATLAB_R2015a.app/bin/:~/homebrew/bin
 color_prompt
