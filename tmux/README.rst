@@ -12,9 +12,10 @@ Basic Commands
 =================  ===========
 Command            Description
 =================  ===========
-C-a %              vertical split pane
-C-a "              horizontal split of pane
+C-a c              new window
 C-a !              new window from pane
+C-a %              new split (vertical)
+C-a "              new split (horizontal) 
 C-a z              zoom current window to max (temporarily)
 C-a d              detach from the current session
 C-a 0..9           select window
