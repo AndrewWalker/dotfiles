@@ -3,6 +3,11 @@ Personal Dotfiles
 
 A basic configuration to bootstrap a machine to make it useful for development 
 
+Additional Documentation
+------------------------
+
+* `tmux modules <tmux/README.rst>`_
+
 Requirements
 ------------
 
