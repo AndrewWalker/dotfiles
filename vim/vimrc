@@ -1,4 +1,48 @@
-" :PlugInstall to add plugins
+" =============================================================================  
+" Vim Configuration
+" =============================================================================  
+" 
+" The guiding principle of this .vimrc is to be reasonably minimal and to 
+" depend on external plugins to do as much work as possible.  
+"
+" Vim configuration is a journey, not a destination, this code changes on a
+" regular basis as I learn knew ways of doing things.
+"
+"
+" Basic Information
+" -----------------
+"
+" <leader> is remapped to `,`
+"
+"
+" Plugins
+" -------
+"
+" Plugins are managed via vim-plug https://github.com/junegunn/vim-plug
+"
+" Install/update the current plugins with
+" 
+"   :PlugInstall 
+"
+"
+" Workflow
+" --------
+"
+" * Run vim inside tmux
+" * Primarily developing in multiple splits
+"   * inspired by vimvcasts http://vimcasts.org/episodes/working-with-windows/
+" * Slowly transitioning from opening / finding files to <C-p> like tools
+"
+"
+" Filetype Extensions
+" -------------------
+"
+" vim/after/ftplugin/haskell.vim
+" vim/after/ftplugin/make.vim
+" vim/after/ftplugin/markdown.vim
+" vim/after/ftplugin/plaintex.vim
+" vim/after/ftplugin/python.vim
+
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'     " Comments
 Plug 'scrooloose/nerdtree'          " File browser
@@ -13,7 +57,6 @@ Plug 'kien/ctrlp.vim'
 call plug#end()
 
 syntax on
-
 let mapleader=","   " the leader command should be a comma rather than a slash
 set nocompatible
 set tabstop=4       " tabstop every 4 'spaces'
@@ -36,15 +79,6 @@ try
 catch
 endtry
 
-" Split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" reload configuration
-map <leader>v :sp $MYVIMRC<CR>
-
 " Filetype remappings
 " These could be in ftdetect, but ok here for now
 au BufRead,BufNewFile,BufFilePost *.md set filetype=markdown
@@ -57,9 +91,29 @@ let g:airline_theme='badwolf'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
-map <silent> <Leader>e :Errors<CR>
-map <Leader>s :SyntasticToggleMode<CR>
-
+" On Mac, make sure that we're using homebrews ctags
+" rather than the default version
 let g:tagbar_ctags_bin = '~/homebrew/bin/ctags'
+" <leader>c code browser
+nmap <leader>c :TagbarToggle<CR>
 
-map <Leader>t :TagbarToggle<CR>
+" Split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" reload configuration
+map <leader>v :sp $MYVIMRC<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
+
+map <leader>l :set nu!<CR>
+map <leader>e :Errors<CR>
+
+" <leader>p toggles paste mode (for content pasted from non-vim sessions)
+map <leader>p :set paste!<CR>
+
+" <leader>f file browser 
+nmap <leader>f :NERDTreeToggle<CR>
+
+
