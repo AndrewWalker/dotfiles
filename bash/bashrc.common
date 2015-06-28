@@ -14,7 +14,7 @@ shopt -s histappend                      # append to history, don't overwrite it
 
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-if [[ -d "~/.cabal/bin" ]]; then 
+if [[ -d "$HOME/.cabal/bin" ]]; then 
     export PATH=$PATH:~/.cabal/bin
 fi
 source ~/.bashrc.platform
