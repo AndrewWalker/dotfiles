@@ -12,3 +12,7 @@
 .sconsign.dblite
 .vagrant
 .DS_Store
+
+# coverage files for clang on mac
+*.profraw
+*.profdata
