@@ -1,0 +1,2 @@
+#!/bin/bash
+nohup /Applications/Kodi.app/Contents/MacOS/Kodi > /dev/null 2>&1

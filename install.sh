@@ -18,6 +18,10 @@ case $OSTYPE in
         TARGET=osx
         SHELL_CONFIG_FILE="$HOME/.bash_profile"
         ;;
+    darwin15)
+        TARGET=osx
+        SHELL_CONFIG_FILE="$HOME/.bash_profile"
+        ;;
 esac
 
 # base-path to the location that this script is being run from

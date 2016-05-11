@@ -1,5 +1,14 @@
 #!/bin/bash
 
+pathadd() {
+    if [[ ":$PATH:" != *":$1:"* ]]; then PATH=${PATH}:$1; fi
+}
+
+pathprepend() {
+    if [[ ":$PATH:" != *":$1:"* ]]; then PATH=$1:${PATH}; fi
+}
+
+
 # Prevents .pyc files from being written
 export PYTHONDONTWRITEBYTECODE=1
 
