@@ -1,2 +1,8 @@
 #!/bin/bash
-nohup /Applications/Kodi.app/Contents/MacOS/Kodi > /dev/null 2>&1
+killall Kodi
+status=$?
+if [ $status -eq 0 ]; then
+    # wait for it to die
+    sleep 5
+fi
+nohup /Applications/Kodi.app/Contents/MacOS/Kodi > /dev/null 2>&1 &
