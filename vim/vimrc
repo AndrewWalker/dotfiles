@@ -57,7 +57,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'lepture/vim-jinja'
 Plug 'tpope/vim-fireplace'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'hylang/vim-hy'
 call plug#end()
 
 syntax on
@@ -76,7 +75,7 @@ set wildignore=*.pyc,*.o,*.so,*.os " reduce noise browsing for files
 set spelllang=en_au
 set spellfile=$HOME/.vimspell.add
 set t_Co=256
-"set cursorline
+set nu
 syntax spell toplevel
 
 try
